@@ -1,0 +1,1227 @@
+Outer loop iteration: 1 (seed=41)
+sdiff_cons=0.25
+INFO - distributed_c10d.py - 2025-10-13 12:20:06,245 - Added key: store_based_barrier_key:1 to store for rank: 0
+INFO - distributed_c10d.py - 2025-10-13 12:20:06,246 - Rank 0: Completed store-based barrier for key:store_based_barrier_key:1 with 1 nodes.
+INFO - main_bpda_eot.py - 2025-10-13 12:20:06,300 - Using device: cuda:0
+INFO - main_bpda_eot.py - 2025-10-13 12:20:06,300 - Writing log file to logs/CIFAR10/pgd_eot/l-1_512x1_it_20_eot_150_20/model_opt_method_aaopt_total_1_forward_0.25_pur_20/lr_0.1_init_False_lambda_1.0_seed_41
+INFO - main_bpda_eot.py - 2025-10-13 12:20:06,300 - Using args: Namespace(log='logs/CIFAR10/pgd_eot/l-1_512x1_it_20_eot_150_20/model_opt_method_aaopt_total_1_forward_0.25_pur_20/lr_0.1_init_False_lambda_1.0_seed_41', config='defalt.yml', seed=41, data_seed=['41'], verbose='info', dataset='CIFAR10', batch_size=8, clf_net='wideresnet-28-10', subset_size=512, purify_iter=20, apprx_iter=1, purify_model='opt', purify_method='aaopt', total_steps=1, forward_steps=0.25, loss_lambda=1.0, lr=0.1, init=False, att_method='pgd_eot', att_lp_norm=-1, att_eps=0.031373, att_step=1, att_n_iter=20, att_alpha=0.00784313725490196, eot_defense_reps=150, eot_attack_reps=20, network_pkl='https://nvlabs-fi-cdn.nvidia.com/edm/pretrained/edm-cifar10-32x32-uncond-vp.pkl', sigma_min=None, sigma_max=None, sdiff_cons=0.25, ex_grad=1, no_stop_grad=1, diff_reversed=1, aa=0, seq_t=0, use_full_steps=0, sdiff_net='./pretrained_models/cifar10_score_DIFF_JOINT_wideresnet-28-10_', use_aa_rand=0, device=device(type='cuda', index=0))
+Files already downloaded and verified
+using cifar10 wideresnet-28-10...
+=> loading cifar10-diffusion checkpoint from 'https://nvlabs-fi-cdn.nvidia.com/edm/pretrained/edm-cifar10-32x32-uncond-vp.pkl'
+loading perturbation model from provided path:  ./pretrained_models/cifar10_score_DIFF_JOINT_wideresnet-28-10_
+perturbation model loaded
+EPS:  0.031373
+SDIFF:  0.25
+BPDA_EOT config: {'eot_defense_ave': 'logits', 'eot_attack_ave': 'logits', 'eot_defense_reps': 150, 'eot_attack_reps': 20, 'adv_steps': 20, 'adv_norm': 'l_inf', 'adv_eps': 0.031373, 'adv_eta': 0.00784325, 'log_freq': 10}
+BPDA_EOT tag: True
+  0%|          | 0/64 [00:00<?, ?it/s]Baseline: 7 of 8
+  0%|          | 0/64 [00:08<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/dweseg2/t_folder/AAOpt_code/main_bpda_eot.py", line 371, in <module>
+    main()
+  File "/home/dweseg2/t_folder/AAOpt_code/main_bpda_eot.py", line 303, in main
+    = attack_and_purif_bpda_eot(args, None, val_dataloader, clf, trans_to_clf, score, sdiff_net, sdiff_sampler, None)
+  File "/home/dweseg2/t_folder/AAOpt_code/eval_bpda_eot.py", line 102, in attack_and_purif_bpda_eot
+    class_batch, ims_adv_batch = adversary_edm.attack_batch(x_val, y_val)
+  File "/home/dweseg2/t_folder/AAOpt_code/attacks/bpda_eot.py", line 150, in attack_batch
+    defended, attack_grad = self.eval_and_bpda_eot_grad(X_adv, y, defended)
+  File "/home/dweseg2/t_folder/AAOpt_code/attacks/bpda_eot.py", line 129, in eval_and_bpda_eot_grad
+    correct, attack_grad = self.purify_and_predict(X_adv, y, self.config['eot_attack_reps'], requires_grad)
+  File "/home/dweseg2/t_folder/AAOpt_code/attacks/bpda_eot.py", line 101, in purify_and_predict
+    correct, loss = self.predict(X_repeat, y, requires_grad, purify_reps,
+  File "/home/dweseg2/t_folder/AAOpt_code/attacks/bpda_eot.py", line 76, in predict
+    logits_true = self.model.purify_and_classify(X)
+  File "/home/dweseg2/t_folder/AAOpt_code/eval_bpda_eot.py", line 23, in purify_and_classify
+    purif_x = purify_x_opt_aaopt(x, self.scorenet, self.sdiff_net, self.sdiff_sampler, self.args)
+  File "/home/dweseg2/t_folder/AAOpt_code/defense.py", line 264, in purify_x_opt_aaopt
+    purif_X_re = torch.clamp(transform_raw(sampler_opt_aaopt(X, score, sdiff_net, sdiff_sampler, args.forward_steps, args.total_steps, args)),0.0,1.0)
+  File "/home/dweseg2/t_folder/AAOpt_code/defense.py", line 159, in sampler_opt_aaopt
+    denoised = net(sample_img_t, t, class_labels)
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "<string>", line 665, in forward
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "<string>", line 362, in forward
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "<string>", line 185, in forward
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "<string>", line 87, in forward
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 40.00 MiB (GPU 0; 79.25 GiB total capacity; 77.70 GiB already allocated; 20.94 MiB free; 78.57 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+ERROR:torch.distributed.elastic.multiprocessing.api:failed (exitcode: 1) local_rank: 0 (pid: 1536729) of binary: /home/dweseg2/sopt/bin/python
+Traceback (most recent call last):
+  File "/home/dweseg2/sopt/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/run.py", line 794, in main
+    run(args)
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/run.py", line 785, in run
+    elastic_launch(
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 250, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+main_bpda_eot.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-10-13_12:20:22
+  host      : octopus.cs.uic.edu
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 1536729)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+Done with sdiff_cons=0.25
+ 
+Completed outer loop iteration: 1 (seed=41)
+===============================
+Outer loop iteration: 2 (seed=42)
+sdiff_cons=0.25
+INFO - distributed_c10d.py - 2025-10-13 12:20:28,241 - Added key: store_based_barrier_key:1 to store for rank: 0
+INFO - distributed_c10d.py - 2025-10-13 12:20:28,241 - Rank 0: Completed store-based barrier for key:store_based_barrier_key:1 with 1 nodes.
+INFO - main_bpda_eot.py - 2025-10-13 12:20:28,295 - Using device: cuda:0
+INFO - main_bpda_eot.py - 2025-10-13 12:20:28,295 - Writing log file to logs/CIFAR10/pgd_eot/l-1_512x1_it_20_eot_150_20/model_opt_method_aaopt_total_1_forward_0.25_pur_20/lr_0.1_init_False_lambda_1.0_seed_42
+INFO - main_bpda_eot.py - 2025-10-13 12:20:28,295 - Using args: Namespace(log='logs/CIFAR10/pgd_eot/l-1_512x1_it_20_eot_150_20/model_opt_method_aaopt_total_1_forward_0.25_pur_20/lr_0.1_init_False_lambda_1.0_seed_42', config='defalt.yml', seed=42, data_seed=['42'], verbose='info', dataset='CIFAR10', batch_size=8, clf_net='wideresnet-28-10', subset_size=512, purify_iter=20, apprx_iter=1, purify_model='opt', purify_method='aaopt', total_steps=1, forward_steps=0.25, loss_lambda=1.0, lr=0.1, init=False, att_method='pgd_eot', att_lp_norm=-1, att_eps=0.031373, att_step=1, att_n_iter=20, att_alpha=0.00784313725490196, eot_defense_reps=150, eot_attack_reps=20, network_pkl='https://nvlabs-fi-cdn.nvidia.com/edm/pretrained/edm-cifar10-32x32-uncond-vp.pkl', sigma_min=None, sigma_max=None, sdiff_cons=0.25, ex_grad=1, no_stop_grad=1, diff_reversed=1, aa=0, seq_t=0, use_full_steps=0, sdiff_net='./pretrained_models/cifar10_score_DIFF_JOINT_wideresnet-28-10_', use_aa_rand=0, device=device(type='cuda', index=0))
+Files already downloaded and verified
+using cifar10 wideresnet-28-10...
+=> loading cifar10-diffusion checkpoint from 'https://nvlabs-fi-cdn.nvidia.com/edm/pretrained/edm-cifar10-32x32-uncond-vp.pkl'
+loading perturbation model from provided path:  ./pretrained_models/cifar10_score_DIFF_JOINT_wideresnet-28-10_
+perturbation model loaded
+EPS:  0.031373
+SDIFF:  0.25
+BPDA_EOT config: {'eot_defense_ave': 'logits', 'eot_attack_ave': 'logits', 'eot_defense_reps': 150, 'eot_attack_reps': 20, 'adv_steps': 20, 'adv_norm': 'l_inf', 'adv_eps': 0.031373, 'adv_eta': 0.00784325, 'log_freq': 10}
+BPDA_EOT tag: True
+  0%|          | 0/64 [00:00<?, ?it/s]Baseline: 7 of 8
+  0%|          | 0/64 [00:08<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/dweseg2/t_folder/AAOpt_code/main_bpda_eot.py", line 371, in <module>
+    main()
+  File "/home/dweseg2/t_folder/AAOpt_code/main_bpda_eot.py", line 303, in main
+    = attack_and_purif_bpda_eot(args, None, val_dataloader, clf, trans_to_clf, score, sdiff_net, sdiff_sampler, None)
+  File "/home/dweseg2/t_folder/AAOpt_code/eval_bpda_eot.py", line 102, in attack_and_purif_bpda_eot
+    class_batch, ims_adv_batch = adversary_edm.attack_batch(x_val, y_val)
+  File "/home/dweseg2/t_folder/AAOpt_code/attacks/bpda_eot.py", line 150, in attack_batch
+    defended, attack_grad = self.eval_and_bpda_eot_grad(X_adv, y, defended)
+  File "/home/dweseg2/t_folder/AAOpt_code/attacks/bpda_eot.py", line 129, in eval_and_bpda_eot_grad
+    correct, attack_grad = self.purify_and_predict(X_adv, y, self.config['eot_attack_reps'], requires_grad)
+  File "/home/dweseg2/t_folder/AAOpt_code/attacks/bpda_eot.py", line 101, in purify_and_predict
+    correct, loss = self.predict(X_repeat, y, requires_grad, purify_reps,
+  File "/home/dweseg2/t_folder/AAOpt_code/attacks/bpda_eot.py", line 76, in predict
+    logits_true = self.model.purify_and_classify(X)
+  File "/home/dweseg2/t_folder/AAOpt_code/eval_bpda_eot.py", line 23, in purify_and_classify
+    purif_x = purify_x_opt_aaopt(x, self.scorenet, self.sdiff_net, self.sdiff_sampler, self.args)
+  File "/home/dweseg2/t_folder/AAOpt_code/defense.py", line 264, in purify_x_opt_aaopt
+    purif_X_re = torch.clamp(transform_raw(sampler_opt_aaopt(X, score, sdiff_net, sdiff_sampler, args.forward_steps, args.total_steps, args)),0.0,1.0)
+  File "/home/dweseg2/t_folder/AAOpt_code/defense.py", line 159, in sampler_opt_aaopt
+    denoised = net(sample_img_t, t, class_labels)
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "<string>", line 665, in forward
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "<string>", line 362, in forward
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "<string>", line 185, in forward
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "<string>", line 87, in forward
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 40.00 MiB (GPU 0; 79.25 GiB total capacity; 77.70 GiB already allocated; 20.94 MiB free; 78.57 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+ERROR:torch.distributed.elastic.multiprocessing.api:failed (exitcode: 1) local_rank: 0 (pid: 1537351) of binary: /home/dweseg2/sopt/bin/python
+Traceback (most recent call last):
+  File "/home/dweseg2/sopt/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/run.py", line 794, in main
+    run(args)
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/run.py", line 785, in run
+    elastic_launch(
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 250, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+main_bpda_eot.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-10-13_12:20:44
+  host      : octopus.cs.uic.edu
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 1537351)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+Done with sdiff_cons=0.25
+ 
+Completed outer loop iteration: 2 (seed=42)
+===============================
+Outer loop iteration: 3 (seed=43)
+sdiff_cons=0.25
+INFO - distributed_c10d.py - 2025-10-13 12:20:50,272 - Added key: store_based_barrier_key:1 to store for rank: 0
+INFO - distributed_c10d.py - 2025-10-13 12:20:50,272 - Rank 0: Completed store-based barrier for key:store_based_barrier_key:1 with 1 nodes.
+INFO - main_bpda_eot.py - 2025-10-13 12:20:50,326 - Using device: cuda:0
+INFO - main_bpda_eot.py - 2025-10-13 12:20:50,326 - Writing log file to logs/CIFAR10/pgd_eot/l-1_512x1_it_20_eot_150_20/model_opt_method_aaopt_total_1_forward_0.25_pur_20/lr_0.1_init_False_lambda_1.0_seed_43
+INFO - main_bpda_eot.py - 2025-10-13 12:20:50,327 - Using args: Namespace(log='logs/CIFAR10/pgd_eot/l-1_512x1_it_20_eot_150_20/model_opt_method_aaopt_total_1_forward_0.25_pur_20/lr_0.1_init_False_lambda_1.0_seed_43', config='defalt.yml', seed=43, data_seed=['43'], verbose='info', dataset='CIFAR10', batch_size=8, clf_net='wideresnet-28-10', subset_size=512, purify_iter=20, apprx_iter=1, purify_model='opt', purify_method='aaopt', total_steps=1, forward_steps=0.25, loss_lambda=1.0, lr=0.1, init=False, att_method='pgd_eot', att_lp_norm=-1, att_eps=0.031373, att_step=1, att_n_iter=20, att_alpha=0.00784313725490196, eot_defense_reps=150, eot_attack_reps=20, network_pkl='https://nvlabs-fi-cdn.nvidia.com/edm/pretrained/edm-cifar10-32x32-uncond-vp.pkl', sigma_min=None, sigma_max=None, sdiff_cons=0.25, ex_grad=1, no_stop_grad=1, diff_reversed=1, aa=0, seq_t=0, use_full_steps=0, sdiff_net='./pretrained_models/cifar10_score_DIFF_JOINT_wideresnet-28-10_', use_aa_rand=0, device=device(type='cuda', index=0))
+Files already downloaded and verified
+using cifar10 wideresnet-28-10...
+=> loading cifar10-diffusion checkpoint from 'https://nvlabs-fi-cdn.nvidia.com/edm/pretrained/edm-cifar10-32x32-uncond-vp.pkl'
+loading perturbation model from provided path:  ./pretrained_models/cifar10_score_DIFF_JOINT_wideresnet-28-10_
+perturbation model loaded
+EPS:  0.031373
+SDIFF:  0.25
+BPDA_EOT config: {'eot_defense_ave': 'logits', 'eot_attack_ave': 'logits', 'eot_defense_reps': 150, 'eot_attack_reps': 20, 'adv_steps': 20, 'adv_norm': 'l_inf', 'adv_eps': 0.031373, 'adv_eta': 0.00784325, 'log_freq': 10}
+BPDA_EOT tag: True
+  0%|          | 0/64 [00:00<?, ?it/s]Baseline: 7 of 8
+  0%|          | 0/64 [00:08<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/dweseg2/t_folder/AAOpt_code/main_bpda_eot.py", line 371, in <module>
+    main()
+  File "/home/dweseg2/t_folder/AAOpt_code/main_bpda_eot.py", line 303, in main
+    = attack_and_purif_bpda_eot(args, None, val_dataloader, clf, trans_to_clf, score, sdiff_net, sdiff_sampler, None)
+  File "/home/dweseg2/t_folder/AAOpt_code/eval_bpda_eot.py", line 102, in attack_and_purif_bpda_eot
+    class_batch, ims_adv_batch = adversary_edm.attack_batch(x_val, y_val)
+  File "/home/dweseg2/t_folder/AAOpt_code/attacks/bpda_eot.py", line 150, in attack_batch
+    defended, attack_grad = self.eval_and_bpda_eot_grad(X_adv, y, defended)
+  File "/home/dweseg2/t_folder/AAOpt_code/attacks/bpda_eot.py", line 129, in eval_and_bpda_eot_grad
+    correct, attack_grad = self.purify_and_predict(X_adv, y, self.config['eot_attack_reps'], requires_grad)
+  File "/home/dweseg2/t_folder/AAOpt_code/attacks/bpda_eot.py", line 101, in purify_and_predict
+    correct, loss = self.predict(X_repeat, y, requires_grad, purify_reps,
+  File "/home/dweseg2/t_folder/AAOpt_code/attacks/bpda_eot.py", line 76, in predict
+    logits_true = self.model.purify_and_classify(X)
+  File "/home/dweseg2/t_folder/AAOpt_code/eval_bpda_eot.py", line 23, in purify_and_classify
+    purif_x = purify_x_opt_aaopt(x, self.scorenet, self.sdiff_net, self.sdiff_sampler, self.args)
+  File "/home/dweseg2/t_folder/AAOpt_code/defense.py", line 264, in purify_x_opt_aaopt
+    purif_X_re = torch.clamp(transform_raw(sampler_opt_aaopt(X, score, sdiff_net, sdiff_sampler, args.forward_steps, args.total_steps, args)),0.0,1.0)
+  File "/home/dweseg2/t_folder/AAOpt_code/defense.py", line 159, in sampler_opt_aaopt
+    denoised = net(sample_img_t, t, class_labels)
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "<string>", line 665, in forward
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "<string>", line 362, in forward
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "<string>", line 185, in forward
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "<string>", line 87, in forward
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 40.00 MiB (GPU 0; 79.25 GiB total capacity; 77.70 GiB already allocated; 20.94 MiB free; 78.57 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+ERROR:torch.distributed.elastic.multiprocessing.api:failed (exitcode: 1) local_rank: 0 (pid: 1537855) of binary: /home/dweseg2/sopt/bin/python
+Traceback (most recent call last):
+  File "/home/dweseg2/sopt/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/run.py", line 794, in main
+    run(args)
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/run.py", line 785, in run
+    elastic_launch(
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 250, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+main_bpda_eot.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-10-13_12:21:06
+  host      : octopus.cs.uic.edu
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 1537855)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+Done with sdiff_cons=0.25
+ 
+Completed outer loop iteration: 3 (seed=43)
+===============================
+Outer loop iteration: 4 (seed=44)
+sdiff_cons=0.25
+INFO - distributed_c10d.py - 2025-10-13 12:21:12,409 - Added key: store_based_barrier_key:1 to store for rank: 0
+INFO - distributed_c10d.py - 2025-10-13 12:21:12,409 - Rank 0: Completed store-based barrier for key:store_based_barrier_key:1 with 1 nodes.
+INFO - main_bpda_eot.py - 2025-10-13 12:21:12,463 - Using device: cuda:0
+INFO - main_bpda_eot.py - 2025-10-13 12:21:12,463 - Writing log file to logs/CIFAR10/pgd_eot/l-1_512x1_it_20_eot_150_20/model_opt_method_aaopt_total_1_forward_0.25_pur_20/lr_0.1_init_False_lambda_1.0_seed_44
+INFO - main_bpda_eot.py - 2025-10-13 12:21:12,463 - Using args: Namespace(log='logs/CIFAR10/pgd_eot/l-1_512x1_it_20_eot_150_20/model_opt_method_aaopt_total_1_forward_0.25_pur_20/lr_0.1_init_False_lambda_1.0_seed_44', config='defalt.yml', seed=44, data_seed=['44'], verbose='info', dataset='CIFAR10', batch_size=8, clf_net='wideresnet-28-10', subset_size=512, purify_iter=20, apprx_iter=1, purify_model='opt', purify_method='aaopt', total_steps=1, forward_steps=0.25, loss_lambda=1.0, lr=0.1, init=False, att_method='pgd_eot', att_lp_norm=-1, att_eps=0.031373, att_step=1, att_n_iter=20, att_alpha=0.00784313725490196, eot_defense_reps=150, eot_attack_reps=20, network_pkl='https://nvlabs-fi-cdn.nvidia.com/edm/pretrained/edm-cifar10-32x32-uncond-vp.pkl', sigma_min=None, sigma_max=None, sdiff_cons=0.25, ex_grad=1, no_stop_grad=1, diff_reversed=1, aa=0, seq_t=0, use_full_steps=0, sdiff_net='./pretrained_models/cifar10_score_DIFF_JOINT_wideresnet-28-10_', use_aa_rand=0, device=device(type='cuda', index=0))
+Files already downloaded and verified
+using cifar10 wideresnet-28-10...
+=> loading cifar10-diffusion checkpoint from 'https://nvlabs-fi-cdn.nvidia.com/edm/pretrained/edm-cifar10-32x32-uncond-vp.pkl'
+loading perturbation model from provided path:  ./pretrained_models/cifar10_score_DIFF_JOINT_wideresnet-28-10_
+perturbation model loaded
+EPS:  0.031373
+SDIFF:  0.25
+BPDA_EOT config: {'eot_defense_ave': 'logits', 'eot_attack_ave': 'logits', 'eot_defense_reps': 150, 'eot_attack_reps': 20, 'adv_steps': 20, 'adv_norm': 'l_inf', 'adv_eps': 0.031373, 'adv_eta': 0.00784325, 'log_freq': 10}
+BPDA_EOT tag: True
+  0%|          | 0/64 [00:00<?, ?it/s]Baseline: 8 of 8
+  0%|          | 0/64 [00:05<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/dweseg2/t_folder/AAOpt_code/main_bpda_eot.py", line 371, in <module>
+    main()
+  File "/home/dweseg2/t_folder/AAOpt_code/main_bpda_eot.py", line 303, in main
+    = attack_and_purif_bpda_eot(args, None, val_dataloader, clf, trans_to_clf, score, sdiff_net, sdiff_sampler, None)
+  File "/home/dweseg2/t_folder/AAOpt_code/eval_bpda_eot.py", line 102, in attack_and_purif_bpda_eot
+    class_batch, ims_adv_batch = adversary_edm.attack_batch(x_val, y_val)
+  File "/home/dweseg2/t_folder/AAOpt_code/attacks/bpda_eot.py", line 150, in attack_batch
+    defended, attack_grad = self.eval_and_bpda_eot_grad(X_adv, y, defended)
+  File "/home/dweseg2/t_folder/AAOpt_code/attacks/bpda_eot.py", line 129, in eval_and_bpda_eot_grad
+    correct, attack_grad = self.purify_and_predict(X_adv, y, self.config['eot_attack_reps'], requires_grad)
+  File "/home/dweseg2/t_folder/AAOpt_code/attacks/bpda_eot.py", line 101, in purify_and_predict
+    correct, loss = self.predict(X_repeat, y, requires_grad, purify_reps,
+  File "/home/dweseg2/t_folder/AAOpt_code/attacks/bpda_eot.py", line 76, in predict
+    logits_true = self.model.purify_and_classify(X)
+  File "/home/dweseg2/t_folder/AAOpt_code/eval_bpda_eot.py", line 23, in purify_and_classify
+    purif_x = purify_x_opt_aaopt(x, self.scorenet, self.sdiff_net, self.sdiff_sampler, self.args)
+  File "/home/dweseg2/t_folder/AAOpt_code/defense.py", line 264, in purify_x_opt_aaopt
+    purif_X_re = torch.clamp(transform_raw(sampler_opt_aaopt(X, score, sdiff_net, sdiff_sampler, args.forward_steps, args.total_steps, args)),0.0,1.0)
+  File "/home/dweseg2/t_folder/AAOpt_code/defense.py", line 159, in sampler_opt_aaopt
+    denoised = net(sample_img_t, t, class_labels)
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "<string>", line 665, in forward
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "<string>", line 362, in forward
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "<string>", line 185, in forward
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "<string>", line 87, in forward
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 40.00 MiB (GPU 0; 79.25 GiB total capacity; 77.70 GiB already allocated; 20.94 MiB free; 78.57 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+ERROR:torch.distributed.elastic.multiprocessing.api:failed (exitcode: 1) local_rank: 0 (pid: 1538410) of binary: /home/dweseg2/sopt/bin/python
+Traceback (most recent call last):
+  File "/home/dweseg2/sopt/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/run.py", line 794, in main
+    run(args)
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/run.py", line 785, in run
+    elastic_launch(
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 250, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+main_bpda_eot.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-10-13_12:21:24
+  host      : octopus.cs.uic.edu
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 1538410)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+Done with sdiff_cons=0.25
+ 
+Completed outer loop iteration: 4 (seed=44)
+===============================
+Outer loop iteration: 5 (seed=45)
+sdiff_cons=0.25
+INFO - distributed_c10d.py - 2025-10-13 12:21:29,225 - Added key: store_based_barrier_key:1 to store for rank: 0
+INFO - distributed_c10d.py - 2025-10-13 12:21:29,225 - Rank 0: Completed store-based barrier for key:store_based_barrier_key:1 with 1 nodes.
+INFO - main_bpda_eot.py - 2025-10-13 12:21:29,279 - Using device: cuda:0
+INFO - main_bpda_eot.py - 2025-10-13 12:21:29,279 - Writing log file to logs/CIFAR10/pgd_eot/l-1_512x1_it_20_eot_150_20/model_opt_method_aaopt_total_1_forward_0.25_pur_20/lr_0.1_init_False_lambda_1.0_seed_45
+INFO - main_bpda_eot.py - 2025-10-13 12:21:29,279 - Using args: Namespace(log='logs/CIFAR10/pgd_eot/l-1_512x1_it_20_eot_150_20/model_opt_method_aaopt_total_1_forward_0.25_pur_20/lr_0.1_init_False_lambda_1.0_seed_45', config='defalt.yml', seed=45, data_seed=['45'], verbose='info', dataset='CIFAR10', batch_size=8, clf_net='wideresnet-28-10', subset_size=512, purify_iter=20, apprx_iter=1, purify_model='opt', purify_method='aaopt', total_steps=1, forward_steps=0.25, loss_lambda=1.0, lr=0.1, init=False, att_method='pgd_eot', att_lp_norm=-1, att_eps=0.031373, att_step=1, att_n_iter=20, att_alpha=0.00784313725490196, eot_defense_reps=150, eot_attack_reps=20, network_pkl='https://nvlabs-fi-cdn.nvidia.com/edm/pretrained/edm-cifar10-32x32-uncond-vp.pkl', sigma_min=None, sigma_max=None, sdiff_cons=0.25, ex_grad=1, no_stop_grad=1, diff_reversed=1, aa=0, seq_t=0, use_full_steps=0, sdiff_net='./pretrained_models/cifar10_score_DIFF_JOINT_wideresnet-28-10_', use_aa_rand=0, device=device(type='cuda', index=0))
+Files already downloaded and verified
+using cifar10 wideresnet-28-10...
+=> loading cifar10-diffusion checkpoint from 'https://nvlabs-fi-cdn.nvidia.com/edm/pretrained/edm-cifar10-32x32-uncond-vp.pkl'
+loading perturbation model from provided path:  ./pretrained_models/cifar10_score_DIFF_JOINT_wideresnet-28-10_
+perturbation model loaded
+EPS:  0.031373
+SDIFF:  0.25
+BPDA_EOT config: {'eot_defense_ave': 'logits', 'eot_attack_ave': 'logits', 'eot_defense_reps': 150, 'eot_attack_reps': 20, 'adv_steps': 20, 'adv_norm': 'l_inf', 'adv_eps': 0.031373, 'adv_eta': 0.00784325, 'log_freq': 10}
+BPDA_EOT tag: True
+  0%|          | 0/64 [00:00<?, ?it/s]Baseline: 8 of 8
+  0%|          | 0/64 [00:05<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/dweseg2/t_folder/AAOpt_code/main_bpda_eot.py", line 371, in <module>
+    main()
+  File "/home/dweseg2/t_folder/AAOpt_code/main_bpda_eot.py", line 303, in main
+    = attack_and_purif_bpda_eot(args, None, val_dataloader, clf, trans_to_clf, score, sdiff_net, sdiff_sampler, None)
+  File "/home/dweseg2/t_folder/AAOpt_code/eval_bpda_eot.py", line 102, in attack_and_purif_bpda_eot
+    class_batch, ims_adv_batch = adversary_edm.attack_batch(x_val, y_val)
+  File "/home/dweseg2/t_folder/AAOpt_code/attacks/bpda_eot.py", line 150, in attack_batch
+    defended, attack_grad = self.eval_and_bpda_eot_grad(X_adv, y, defended)
+  File "/home/dweseg2/t_folder/AAOpt_code/attacks/bpda_eot.py", line 129, in eval_and_bpda_eot_grad
+    correct, attack_grad = self.purify_and_predict(X_adv, y, self.config['eot_attack_reps'], requires_grad)
+  File "/home/dweseg2/t_folder/AAOpt_code/attacks/bpda_eot.py", line 101, in purify_and_predict
+    correct, loss = self.predict(X_repeat, y, requires_grad, purify_reps,
+  File "/home/dweseg2/t_folder/AAOpt_code/attacks/bpda_eot.py", line 76, in predict
+    logits_true = self.model.purify_and_classify(X)
+  File "/home/dweseg2/t_folder/AAOpt_code/eval_bpda_eot.py", line 23, in purify_and_classify
+    purif_x = purify_x_opt_aaopt(x, self.scorenet, self.sdiff_net, self.sdiff_sampler, self.args)
+  File "/home/dweseg2/t_folder/AAOpt_code/defense.py", line 264, in purify_x_opt_aaopt
+    purif_X_re = torch.clamp(transform_raw(sampler_opt_aaopt(X, score, sdiff_net, sdiff_sampler, args.forward_steps, args.total_steps, args)),0.0,1.0)
+  File "/home/dweseg2/t_folder/AAOpt_code/defense.py", line 159, in sampler_opt_aaopt
+    denoised = net(sample_img_t, t, class_labels)
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "<string>", line 665, in forward
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "<string>", line 362, in forward
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "<string>", line 185, in forward
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "<string>", line 87, in forward
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 40.00 MiB (GPU 0; 79.25 GiB total capacity; 77.70 GiB already allocated; 20.94 MiB free; 78.57 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+ERROR:torch.distributed.elastic.multiprocessing.api:failed (exitcode: 1) local_rank: 0 (pid: 1538996) of binary: /home/dweseg2/sopt/bin/python
+Traceback (most recent call last):
+  File "/home/dweseg2/sopt/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 346, in wrapper
+    return f(*args, **kwargs)
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/run.py", line 794, in main
+    run(args)
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/run.py", line 785, in run
+    elastic_launch(
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 134, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/dweseg2/sopt/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 250, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+main_bpda_eot.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2025-10-13_12:21:40
+  host      : octopus.cs.uic.edu
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 1538996)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+Done with sdiff_cons=0.25
+ 
+Completed outer loop iteration: 5 (seed=45)
+===============================
+Outer loop iteration: 1 (seed=41)
+sdiff_cons=0.25
+INFO - distributed_c10d.py - 2025-10-13 12:22:15,719 - Added key: store_based_barrier_key:1 to store for rank: 0
+INFO - distributed_c10d.py - 2025-10-13 12:22:15,720 - Rank 0: Completed store-based barrier for key:store_based_barrier_key:1 with 1 nodes.
+INFO - main_bpda_eot.py - 2025-10-13 12:22:15,774 - Using device: cuda:0
+INFO - main_bpda_eot.py - 2025-10-13 12:22:15,774 - Writing log file to logs/CIFAR10/pgd_eot/l-1_512x1_it_20_eot_150_20/model_opt_method_aaopt_total_1_forward_0.25_pur_20/lr_0.1_init_False_lambda_1.0_seed_41
+INFO - main_bpda_eot.py - 2025-10-13 12:22:15,774 - Using args: Namespace(log='logs/CIFAR10/pgd_eot/l-1_512x1_it_20_eot_150_20/model_opt_method_aaopt_total_1_forward_0.25_pur_20/lr_0.1_init_False_lambda_1.0_seed_41', config='defalt.yml', seed=41, data_seed=['41'], verbose='info', dataset='CIFAR10', batch_size=4, clf_net='wideresnet-28-10', subset_size=512, purify_iter=20, apprx_iter=1, purify_model='opt', purify_method='aaopt', total_steps=1, forward_steps=0.25, loss_lambda=1.0, lr=0.1, init=False, att_method='pgd_eot', att_lp_norm=-1, att_eps=0.031373, att_step=1, att_n_iter=20, att_alpha=0.00784313725490196, eot_defense_reps=150, eot_attack_reps=20, network_pkl='https://nvlabs-fi-cdn.nvidia.com/edm/pretrained/edm-cifar10-32x32-uncond-vp.pkl', sigma_min=None, sigma_max=None, sdiff_cons=0.25, ex_grad=1, no_stop_grad=1, diff_reversed=1, aa=0, seq_t=0, use_full_steps=0, sdiff_net='./pretrained_models/cifar10_score_DIFF_JOINT_wideresnet-28-10_', use_aa_rand=0, device=device(type='cuda', index=0))
+Files already downloaded and verified
+using cifar10 wideresnet-28-10...
+=> loading cifar10-diffusion checkpoint from 'https://nvlabs-fi-cdn.nvidia.com/edm/pretrained/edm-cifar10-32x32-uncond-vp.pkl'
+loading perturbation model from provided path:  ./pretrained_models/cifar10_score_DIFF_JOINT_wideresnet-28-10_
+perturbation model loaded
+EPS:  0.031373
+SDIFF:  0.25
+BPDA_EOT config: {'eot_defense_ave': 'logits', 'eot_attack_ave': 'logits', 'eot_defense_reps': 150, 'eot_attack_reps': 20, 'adv_steps': 20, 'adv_norm': 'l_inf', 'adv_eps': 0.031373, 'adv_eta': 0.00784325, 'log_freq': 10}
+BPDA_EOT tag: True
+  0%|          | 0/128 [00:00<?, ?it/s]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 1-th batch in attack_all
+  1%|          | 1/128 [00:55<1:57:53, 55.69s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 2-th batch in attack_all
+  2%|▏         | 2/128 [01:53<1:59:22, 56.84s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 3-th batch in attack_all
+  2%|▏         | 3/128 [02:50<1:59:11, 57.21s/it]Baseline: 2 of 4
+Attack 0 of 20   Batch defended: 2 of 4
+Attack 1 of 20   Batch defended: 2 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 4-th batch in attack_all
+  3%|▎         | 4/128 [03:51<2:01:19, 58.70s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 5-th batch in attack_all
+  4%|▍         | 5/128 [04:56<2:04:33, 60.76s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 6-th batch in attack_all
+  5%|▍         | 6/128 [05:54<2:01:25, 59.72s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 7-th batch in attack_all
+  5%|▌         | 7/128 [07:08<2:10:07, 64.53s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 8-th batch in attack_all
+  6%|▋         | 8/128 [08:02<2:02:34, 61.29s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 9-th batch in attack_all
+  7%|▋         | 9/128 [08:57<1:57:12, 59.09s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 10-th batch in attack_all
+  8%|▊         | 10/128 [09:54<1:55:18, 58.63s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 2 of 4
+Attack 1 of 20   Batch defended: 2 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 11-th batch in attack_all
+  9%|▊         | 11/128 [10:55<1:55:41, 59.33s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 12-th batch in attack_all
+  9%|▉         | 12/128 [11:53<1:53:44, 58.83s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 13-th batch in attack_all
+ 10%|█         | 13/128 [12:47<1:50:10, 57.48s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 14-th batch in attack_all
+ 11%|█         | 14/128 [13:58<1:57:01, 61.59s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 15-th batch in attack_all
+ 12%|█▏        | 15/128 [14:56<1:53:45, 60.40s/it]Baseline: 2 of 4
+Attack 0 of 20   Batch defended: 2 of 4
+Attack 1 of 20   Batch defended: 2 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 16-th batch in attack_all
+ 12%|█▎        | 16/128 [15:57<1:53:04, 60.58s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 17-th batch in attack_all
+ 13%|█▎        | 17/128 [16:55<1:50:26, 59.70s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 18-th batch in attack_all
+ 14%|█▍        | 18/128 [17:49<1:46:35, 58.14s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 19-th batch in attack_all
+ 15%|█▍        | 19/128 [18:44<1:43:35, 57.02s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 20-th batch in attack_all
+ 16%|█▌        | 20/128 [19:45<1:44:49, 58.23s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 21-th batch in attack_all
+ 16%|█▋        | 21/128 [20:39<1:41:47, 57.08s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 22-th batch in attack_all
+ 17%|█▋        | 22/128 [21:43<1:44:43, 59.27s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 23-th batch in attack_all
+ 18%|█▊        | 23/128 [22:38<1:41:09, 57.81s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 24-th batch in attack_all
+ 19%|█▉        | 24/128 [23:32<1:38:29, 56.83s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 25-th batch in attack_all
+ 20%|█▉        | 25/128 [24:40<1:43:08, 60.09s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 26-th batch in attack_all
+ 20%|██        | 26/128 [25:41<1:42:39, 60.39s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 27-th batch in attack_all
+ 21%|██        | 27/128 [26:42<1:41:59, 60.58s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 28-th batch in attack_all
+ 22%|██▏       | 28/128 [27:36<1:37:51, 58.71s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 29-th batch in attack_all
+ 23%|██▎       | 29/128 [28:31<1:34:42, 57.40s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 1 of 4
+finished 30-th batch in attack_all
+ 23%|██▎       | 30/128 [29:52<1:45:20, 64.50s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 31-th batch in attack_all
+ 24%|██▍       | 31/128 [31:00<1:45:51, 65.48s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 32-th batch in attack_all
+ 25%|██▌       | 32/128 [31:54<1:39:29, 62.18s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 33-th batch in attack_all
+ 26%|██▌       | 33/128 [32:52<1:36:19, 60.84s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 1 of 4
+finished 34-th batch in attack_all
+ 27%|██▋       | 34/128 [34:06<1:41:42, 64.92s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 35-th batch in attack_all
+ 27%|██▋       | 35/128 [35:01<1:35:46, 61.79s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 36-th batch in attack_all
+ 28%|██▊       | 36/128 [35:55<1:31:23, 59.60s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 37-th batch in attack_all
+ 29%|██▉       | 37/128 [36:50<1:28:03, 58.06s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 38-th batch in attack_all
+ 30%|██▉       | 38/128 [37:44<1:25:28, 56.98s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 39-th batch in attack_all
+ 30%|███       | 39/128 [38:42<1:24:49, 57.18s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 40-th batch in attack_all
+ 31%|███▏      | 40/128 [39:40<1:24:08, 57.36s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 41-th batch in attack_all
+ 32%|███▏      | 41/128 [40:37<1:23:18, 57.45s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 42-th batch in attack_all
+ 33%|███▎      | 42/128 [41:32<1:21:00, 56.52s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 43-th batch in attack_all
+ 34%|███▎      | 43/128 [42:29<1:20:33, 56.87s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 44-th batch in attack_all
+ 34%|███▍      | 44/128 [43:37<1:24:09, 60.12s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 45-th batch in attack_all
+ 35%|███▌      | 45/128 [44:31<1:20:45, 58.38s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 46-th batch in attack_all
+ 36%|███▌      | 46/128 [45:26<1:18:07, 57.16s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 47-th batch in attack_all
+ 37%|███▋      | 47/128 [46:20<1:16:01, 56.31s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 48-th batch in attack_all
+ 38%|███▊      | 48/128 [47:18<1:15:37, 56.72s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 49-th batch in attack_all
+ 38%|███▊      | 49/128 [48:12<1:13:46, 56.03s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 50-th batch in attack_all
+ 39%|███▉      | 50/128 [49:06<1:12:09, 55.50s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 51-th batch in attack_all
+ 40%|███▉      | 51/128 [50:01<1:10:45, 55.13s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 52-th batch in attack_all
+ 41%|████      | 52/128 [50:58<1:10:46, 55.87s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 53-th batch in attack_all
+ 41%|████▏     | 53/128 [52:03<1:13:04, 58.46s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 54-th batch in attack_all
+ 42%|████▏     | 54/128 [53:24<1:20:27, 65.24s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 55-th batch in attack_all
+ 43%|████▎     | 55/128 [54:28<1:19:04, 64.99s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 56-th batch in attack_all
+ 44%|████▍     | 56/128 [55:23<1:14:11, 61.83s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 57-th batch in attack_all
+ 45%|████▍     | 57/128 [56:24<1:12:53, 61.59s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 58-th batch in attack_all
+ 45%|████▌     | 58/128 [57:41<1:17:29, 66.43s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 59-th batch in attack_all
+ 46%|████▌     | 59/128 [58:46<1:15:40, 65.81s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 60-th batch in attack_all
+ 47%|████▋     | 60/128 [59:40<1:10:40, 62.37s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 61-th batch in attack_all
+ 48%|████▊     | 61/128 [1:00:34<1:06:56, 59.95s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 62-th batch in attack_all
+ 48%|████▊     | 62/128 [1:01:29<1:04:05, 58.26s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 63-th batch in attack_all
+ 49%|████▉     | 63/128 [1:02:26<1:02:55, 58.08s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 64-th batch in attack_all
+ 50%|█████     | 64/128 [1:03:21<1:00:43, 56.93s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 65-th batch in attack_all
+ 51%|█████     | 65/128 [1:04:15<58:56, 56.13s/it]  Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 66-th batch in attack_all
+ 52%|█████▏    | 66/128 [1:05:12<58:27, 56.57s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 67-th batch in attack_all
+ 52%|█████▏    | 67/128 [1:06:07<56:48, 55.88s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 68-th batch in attack_all
+ 53%|█████▎    | 68/128 [1:07:01<55:23, 55.40s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 69-th batch in attack_all
+ 54%|█████▍    | 69/128 [1:07:59<55:07, 56.06s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 70-th batch in attack_all
+ 55%|█████▍    | 70/128 [1:08:53<53:40, 55.53s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 71-th batch in attack_all
+ 55%|█████▌    | 71/128 [1:09:51<53:23, 56.20s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 72-th batch in attack_all
+ 56%|█████▋    | 72/128 [1:11:05<57:32, 61.65s/it]Baseline: 2 of 4
+Attack 0 of 20   Batch defended: 2 of 4
+Attack 1 of 20   Batch defended: 2 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 73-th batch in attack_all
+ 57%|█████▋    | 73/128 [1:12:06<56:19, 61.44s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 74-th batch in attack_all
+ 58%|█████▊    | 74/128 [1:13:17<57:54, 64.35s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 75-th batch in attack_all
+ 59%|█████▊    | 75/128 [1:14:15<55:05, 62.36s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 76-th batch in attack_all
+ 59%|█████▉    | 76/128 [1:15:13<52:50, 60.98s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 77-th batch in attack_all
+ 60%|██████    | 77/128 [1:16:07<50:10, 59.02s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 78-th batch in attack_all
+ 61%|██████    | 78/128 [1:17:05<48:52, 58.64s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 79-th batch in attack_all
+ 62%|██████▏   | 79/128 [1:18:02<47:37, 58.33s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 80-th batch in attack_all
+ 62%|██████▎   | 80/128 [1:19:00<46:29, 58.10s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 81-th batch in attack_all
+ 63%|██████▎   | 81/128 [1:19:54<44:36, 56.95s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 82-th batch in attack_all
+ 64%|██████▍   | 82/128 [1:20:52<43:48, 57.14s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 83-th batch in attack_all
+ 65%|██████▍   | 83/128 [1:22:06<46:43, 62.30s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 84-th batch in attack_all
+ 66%|██████▌   | 84/128 [1:23:07<45:23, 61.91s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 85-th batch in attack_all
+ 66%|██████▋   | 85/128 [1:24:08<44:09, 61.61s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 86-th batch in attack_all
+ 67%|██████▋   | 86/128 [1:25:02<41:35, 59.41s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 87-th batch in attack_all
+ 68%|██████▊   | 87/128 [1:25:57<39:32, 57.87s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 88-th batch in attack_all
+ 69%|██████▉   | 88/128 [1:26:51<37:53, 56.84s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 89-th batch in attack_all
+ 70%|██████▉   | 89/128 [1:27:45<36:28, 56.11s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 90-th batch in attack_all
+ 70%|███████   | 90/128 [1:28:40<35:12, 55.59s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 91-th batch in attack_all
+ 71%|███████   | 91/128 [1:29:34<34:02, 55.21s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 92-th batch in attack_all
+ 72%|███████▏  | 92/128 [1:30:28<32:58, 54.95s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 93-th batch in attack_all
+ 73%|███████▎  | 93/128 [1:31:30<33:08, 56.82s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 2 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 94-th batch in attack_all
+ 73%|███████▎  | 94/128 [1:32:34<33:28, 59.09s/it]Baseline: 2 of 4
+Attack 0 of 20   Batch defended: 2 of 4
+Attack 1 of 20   Batch defended: 2 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 95-th batch in attack_all
+ 74%|███████▍  | 95/128 [1:33:35<32:49, 59.68s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 96-th batch in attack_all
+ 75%|███████▌  | 96/128 [1:34:30<30:58, 58.09s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 97-th batch in attack_all
+ 76%|███████▌  | 97/128 [1:35:27<29:56, 57.96s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 98-th batch in attack_all
+ 77%|███████▋  | 98/128 [1:36:22<28:26, 56.88s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 99-th batch in attack_all
+ 77%|███████▋  | 99/128 [1:37:19<27:36, 57.11s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 100-th batch in attack_all
+ 78%|███████▊  | 100/128 [1:38:20<27:12, 58.32s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 101-th batch in attack_all
+ 79%|███████▉  | 101/128 [1:39:18<26:10, 58.16s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 102-th batch in attack_all
+ 80%|███████▉  | 102/128 [1:40:36<27:44, 64.01s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 103-th batch in attack_all
+ 80%|████████  | 103/128 [1:41:30<25:27, 61.11s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 104-th batch in attack_all
+ 81%|████████▏ | 104/128 [1:42:28<24:01, 60.08s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 105-th batch in attack_all
+ 82%|████████▏ | 105/128 [1:43:22<22:22, 58.35s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 106-th batch in attack_all
+ 83%|████████▎ | 106/128 [1:44:16<20:57, 57.15s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 2 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 107-th batch in attack_all
+ 84%|████████▎ | 107/128 [1:45:18<20:25, 58.34s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 108-th batch in attack_all
+ 84%|████████▍ | 108/128 [1:46:19<19:42, 59.14s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 109-th batch in attack_all
+ 85%|████████▌ | 109/128 [1:47:16<18:34, 58.68s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 110-th batch in attack_all
+ 86%|████████▌ | 110/128 [1:48:10<17:12, 57.37s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 111-th batch in attack_all
+ 87%|████████▋ | 111/128 [1:49:11<16:33, 58.46s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 112-th batch in attack_all
+ 88%|████████▊ | 112/128 [1:50:06<15:15, 57.21s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 113-th batch in attack_all
+ 88%|████████▊ | 113/128 [1:51:00<14:05, 56.36s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 114-th batch in attack_all
+ 89%|████████▉ | 114/128 [1:52:15<14:24, 61.77s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 115-th batch in attack_all
+ 90%|████████▉ | 115/128 [1:53:15<13:19, 61.52s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 116-th batch in attack_all
+ 91%|█████████ | 116/128 [1:54:27<12:52, 64.38s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 117-th batch in attack_all
+ 91%|█████████▏| 117/128 [1:55:24<11:25, 62.35s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 118-th batch in attack_all
+ 92%|█████████▏| 118/128 [1:56:18<09:59, 59.92s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 119-th batch in attack_all
+ 93%|█████████▎| 119/128 [1:57:16<08:52, 59.22s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 120-th batch in attack_all
+ 94%|█████████▍| 120/128 [1:58:10<07:41, 57.73s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 121-th batch in attack_all
+ 95%|█████████▍| 121/128 [1:59:04<06:36, 56.69s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 122-th batch in attack_all
+ 95%|█████████▌| 122/128 [2:00:12<05:59, 59.96s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 123-th batch in attack_all
+ 96%|█████████▌| 123/128 [2:01:06<04:51, 58.25s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 124-th batch in attack_all
+ 97%|█████████▋| 124/128 [2:02:01<03:48, 57.06s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 125-th batch in attack_all
+ 98%|█████████▊| 125/128 [2:02:58<02:51, 57.25s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 126-th batch in attack_all
+ 98%|█████████▊| 126/128 [2:03:56<01:54, 57.41s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 127-th batch in attack_all
+ 99%|█████████▉| 127/128 [2:04:57<00:58, 58.49s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 128-th batch in attack_all
+100%|██████████| 128/128 [2:05:55<00:00, 58.22s/it]100%|██████████| 128/128 [2:05:55<00:00, 59.03s/it]
+Rank: 0, x_adv shape: torch.Size([512, 3, 32, 32])
+INFO - main_bpda_eot.py - 2025-10-13 14:28:13,799 - Rank:0
+INFO - main_bpda_eot.py - 2025-10-13 14:28:13,799 - standard accuracy: 0.916015625
+INFO - main_bpda_eot.py - 2025-10-13 14:28:13,799 - robust accuracy: 0.8515625
+INFO - main_bpda_eot.py - 2025-10-13 14:28:13,799 - All gpus
+INFO - main_bpda_eot.py - 2025-10-13 14:28:13,799 - standard accuracy: 0.916015625
+INFO - main_bpda_eot.py - 2025-10-13 14:28:13,799 - robust accuracy: 0.8515625
+INFO - main_bpda_eot.py - 2025-10-13 14:28:13,799 - time elapsed: 7555.31s
+Done with sdiff_cons=0.25
+ 
+Completed outer loop iteration: 1 (seed=41)
+===============================

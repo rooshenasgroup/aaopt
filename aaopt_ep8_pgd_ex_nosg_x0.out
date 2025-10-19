@@ -1,0 +1,796 @@
+Outer loop iteration: 1 (seed=41)
+sdiff_cons=0.25
+INFO - distributed_c10d.py - 2025-10-13 12:37:21,443 - Added key: store_based_barrier_key:1 to store for rank: 0
+INFO - distributed_c10d.py - 2025-10-13 12:37:21,443 - Rank 0: Completed store-based barrier for key:store_based_barrier_key:1 with 1 nodes.
+INFO - main_bpda_eot.py - 2025-10-13 12:37:21,516 - Using device: cuda:0
+INFO - main_bpda_eot.py - 2025-10-13 12:37:21,516 - Writing log file to logs/CIFAR10/pgd_eot/l-1_512x1_it_20_eot_150_20/model_opt_method_x0_total_1_forward_0.25_pur_20/lr_0.1_init_False_lambda_1.0_seed_41
+INFO - main_bpda_eot.py - 2025-10-13 12:37:21,516 - Using args: Namespace(log='logs/CIFAR10/pgd_eot/l-1_512x1_it_20_eot_150_20/model_opt_method_x0_total_1_forward_0.25_pur_20/lr_0.1_init_False_lambda_1.0_seed_41', config='defalt.yml', seed=41, data_seed=['41'], verbose='info', dataset='CIFAR10', batch_size=4, clf_net='wideresnet-28-10', subset_size=512, purify_iter=20, apprx_iter=1, purify_model='opt', purify_method='x0', total_steps=1, forward_steps=0.25, loss_lambda=1.0, lr=0.1, init=False, att_method='pgd_eot', att_lp_norm=-1, att_eps=0.031373, att_step=1, att_n_iter=20, att_alpha=0.00784313725490196, eot_defense_reps=150, eot_attack_reps=20, network_pkl='https://nvlabs-fi-cdn.nvidia.com/edm/pretrained/edm-cifar10-32x32-uncond-vp.pkl', sigma_min=None, sigma_max=None, sdiff_cons=0.25, ex_grad=1, no_stop_grad=1, diff_reversed=1, aa=0, seq_t=0, use_full_steps=0, sdiff_net='./pretrained_models/cifar10_score_DIFF_JOINT_wideresnet-28-10_', use_aa_rand=0, device=device(type='cuda', index=0))
+Files already downloaded and verified
+using cifar10 wideresnet-28-10...
+=> loading cifar10-diffusion checkpoint from 'https://nvlabs-fi-cdn.nvidia.com/edm/pretrained/edm-cifar10-32x32-uncond-vp.pkl'
+Not using perturbation model
+EPS:  0.031373
+SDIFF:  0.25
+BPDA_EOT config: {'eot_defense_ave': 'logits', 'eot_attack_ave': 'logits', 'eot_defense_reps': 150, 'eot_attack_reps': 20, 'adv_steps': 20, 'adv_norm': 'l_inf', 'adv_eps': 0.031373, 'adv_eta': 0.00784325, 'log_freq': 10}
+BPDA_EOT tag: True
+  0%|          | 0/128 [00:00<?, ?it/s]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 1-th batch in attack_all
+  1%|          | 1/128 [01:16<2:42:13, 76.64s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 2-th batch in attack_all
+  2%|▏         | 2/128 [02:38<2:47:15, 79.65s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 3-th batch in attack_all
+  2%|▏         | 3/128 [04:00<2:48:18, 80.79s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 4-th batch in attack_all
+  3%|▎         | 4/128 [05:28<2:52:35, 83.51s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 5-th batch in attack_all
+  4%|▍         | 5/128 [06:44<2:46:13, 81.08s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 6-th batch in attack_all
+  5%|▍         | 6/128 [08:01<2:41:53, 79.62s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 7-th batch in attack_all
+  5%|▌         | 7/128 [09:29<2:45:53, 82.26s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 8-th batch in attack_all
+  6%|▋         | 8/128 [10:46<2:41:01, 80.51s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 9-th batch in attack_all
+  7%|▋         | 9/128 [12:03<2:37:22, 79.35s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 10-th batch in attack_all
+  8%|▊         | 10/128 [13:25<2:37:47, 80.23s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 11-th batch in attack_all
+  9%|▊         | 11/128 [15:03<2:47:25, 85.86s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 12-th batch in attack_all
+  9%|▉         | 12/128 [16:31<2:47:05, 86.43s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 13-th batch in attack_all
+ 10%|█         | 13/128 [17:53<2:43:14, 85.17s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 2 of 4
+Attack 1 of 20   Batch defended: 2 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 14-th batch in attack_all
+ 11%|█         | 14/128 [19:21<2:43:16, 85.93s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 15-th batch in attack_all
+ 12%|█▏        | 15/128 [20:43<2:39:44, 84.82s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 16-th batch in attack_all
+ 12%|█▎        | 16/128 [22:06<2:36:52, 84.04s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 17-th batch in attack_all
+ 13%|█▎        | 17/128 [23:33<2:37:30, 85.14s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 18-th batch in attack_all
+ 14%|█▍        | 18/128 [24:50<2:31:27, 82.62s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 19-th batch in attack_all
+ 15%|█▍        | 19/128 [26:12<2:29:52, 82.50s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 20-th batch in attack_all
+ 16%|█▌        | 20/128 [27:34<2:28:22, 82.43s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 21-th batch in attack_all
+ 16%|█▋        | 21/128 [28:51<2:23:58, 80.73s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 1 of 4
+Attack 20 of 20   Batch defended: 1 of 4
+finished 22-th batch in attack_all
+ 17%|█▋        | 22/128 [30:30<2:32:06, 86.10s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 23-th batch in attack_all
+ 18%|█▊        | 23/128 [31:52<2:28:38, 84.94s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 24-th batch in attack_all
+ 19%|█▉        | 24/128 [33:36<2:37:10, 90.68s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 25-th batch in attack_all
+ 20%|█▉        | 25/128 [34:53<2:28:28, 86.49s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 26-th batch in attack_all
+ 20%|██        | 26/128 [36:15<2:24:51, 85.21s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 1 of 4
+Attack 20 of 20   Batch defended: 1 of 4
+finished 27-th batch in attack_all
+ 21%|██        | 27/128 [38:10<2:38:29, 94.15s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 28-th batch in attack_all
+ 22%|██▏       | 28/128 [39:38<2:33:41, 92.22s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 29-th batch in attack_all
+ 23%|██▎       | 29/128 [40:55<2:24:30, 87.58s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 30-th batch in attack_all
+ 23%|██▎       | 30/128 [42:22<2:23:04, 87.60s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 31-th batch in attack_all
+ 24%|██▍       | 31/128 [43:55<2:24:18, 89.26s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 32-th batch in attack_all
+ 25%|██▌       | 32/128 [45:12<2:16:48, 85.51s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 33-th batch in attack_all
+ 26%|██▌       | 33/128 [46:29<2:11:13, 82.88s/it]Baseline: 2 of 4
+Attack 0 of 20   Batch defended: 2 of 4
+Attack 1 of 20   Batch defended: 2 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 34-th batch in attack_all
+ 27%|██▋       | 34/128 [48:13<2:19:47, 89.23s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 35-th batch in attack_all
+ 27%|██▋       | 35/128 [49:35<2:15:03, 87.13s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 36-th batch in attack_all
+ 28%|██▊       | 36/128 [50:52<2:08:50, 84.02s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 37-th batch in attack_all
+ 29%|██▉       | 37/128 [52:25<2:11:34, 86.76s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 38-th batch in attack_all
+ 30%|██▉       | 38/128 [53:42<2:05:38, 83.76s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 39-th batch in attack_all
+ 30%|███       | 39/128 [54:59<2:01:07, 81.66s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 40-th batch in attack_all
+ 31%|███▏      | 40/128 [56:21<2:00:01, 81.83s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 41-th batch in attack_all
+ 32%|███▏      | 41/128 [57:43<1:58:49, 81.95s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 42-th batch in attack_all
+ 33%|███▎      | 42/128 [59:05<1:57:34, 82.03s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 43-th batch in attack_all
+ 34%|███▎      | 43/128 [1:00:33<1:58:36, 83.73s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 44-th batch in attack_all
+ 34%|███▍      | 44/128 [1:02:06<2:01:10, 86.55s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 45-th batch in attack_all
+ 35%|███▌      | 45/128 [1:03:23<1:55:40, 83.62s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 46-th batch in attack_all
+ 36%|███▌      | 46/128 [1:04:56<1:58:11, 86.48s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 47-th batch in attack_all
+ 37%|███▋      | 47/128 [1:06:13<1:52:48, 83.56s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 48-th batch in attack_all
+ 38%|███▊      | 48/128 [1:07:29<1:48:41, 81.52s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 49-th batch in attack_all
+ 38%|███▊      | 49/128 [1:08:46<1:45:26, 80.09s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 50-th batch in attack_all
+ 39%|███▉      | 50/128 [1:10:03<1:42:48, 79.08s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 51-th batch in attack_all
+ 40%|███▉      | 51/128 [1:11:20<1:40:35, 78.38s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 52-th batch in attack_all
+ 41%|████      | 52/128 [1:12:42<1:40:44, 79.53s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 53-th batch in attack_all
+ 41%|████▏     | 53/128 [1:13:59<1:38:21, 78.68s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 54-th batch in attack_all
+ 42%|████▏     | 54/128 [1:15:21<1:38:20, 79.74s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 55-th batch in attack_all
+ 43%|████▎     | 55/128 [1:16:43<1:37:54, 80.48s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 56-th batch in attack_all
+ 44%|████▍     | 56/128 [1:18:00<1:35:13, 79.36s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 57-th batch in attack_all
+ 45%|████▍     | 57/128 [1:19:22<1:34:55, 80.22s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 58-th batch in attack_all
+ 45%|████▌     | 58/128 [1:21:06<1:41:56, 87.38s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 59-th batch in attack_all
+ 46%|████▌     | 59/128 [1:22:34<1:40:35, 87.47s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 60-th batch in attack_all
+ 47%|████▋     | 60/128 [1:24:01<1:39:12, 87.53s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 61-th batch in attack_all
+ 48%|████▊     | 61/128 [1:25:18<1:34:08, 84.30s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 62-th batch in attack_all
+ 48%|████▊     | 62/128 [1:26:35<1:30:14, 82.03s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 63-th batch in attack_all
+ 49%|████▉     | 63/128 [1:27:52<1:27:09, 80.45s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 2 of 4
+Attack 10 of 20   Batch defended: 1 of 4
+Attack 20 of 20   Batch defended: 1 of 4
+finished 64-th batch in attack_all
+ 50%|█████     | 64/128 [1:29:30<1:31:37, 85.90s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 65-th batch in attack_all
+ 51%|█████     | 65/128 [1:30:53<1:29:03, 84.81s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 66-th batch in attack_all
+ 52%|█████▏    | 66/128 [1:32:15<1:26:49, 84.02s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 67-th batch in attack_all
+ 52%|█████▏    | 67/128 [1:33:42<1:26:30, 85.10s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 68-th batch in attack_all
+ 53%|█████▎    | 68/128 [1:34:59<1:22:34, 82.58s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 69-th batch in attack_all
+ 54%|█████▍    | 69/128 [1:36:27<1:22:42, 84.11s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 70-th batch in attack_all
+ 55%|█████▍    | 70/128 [1:37:44<1:19:10, 81.90s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 71-th batch in attack_all
+ 55%|█████▌    | 71/128 [1:39:06<1:17:53, 82.00s/it]Baseline: 2 of 4
+Attack 0 of 20   Batch defended: 2 of 4
+Attack 1 of 20   Batch defended: 2 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 72-th batch in attack_all
+ 56%|█████▋    | 72/128 [1:40:33<1:18:07, 83.70s/it]Baseline: 2 of 4
+Attack 0 of 20   Batch defended: 2 of 4
+Attack 1 of 20   Batch defended: 2 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 73-th batch in attack_all
+ 57%|█████▋    | 73/128 [1:42:01<1:17:49, 84.90s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 74-th batch in attack_all
+ 58%|█████▊    | 74/128 [1:43:40<1:20:06, 89.00s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 75-th batch in attack_all
+ 59%|█████▊    | 75/128 [1:45:02<1:16:47, 86.94s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 76-th batch in attack_all
+ 59%|█████▉    | 76/128 [1:46:24<1:14:06, 85.50s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 77-th batch in attack_all
+ 60%|██████    | 77/128 [1:47:46<1:11:49, 84.50s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 78-th batch in attack_all
+ 61%|██████    | 78/128 [1:49:03<1:08:27, 82.16s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 2 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 79-th batch in attack_all
+ 62%|██████▏   | 79/128 [1:50:42<1:11:08, 87.11s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 80-th batch in attack_all
+ 62%|██████▎   | 80/128 [1:52:04<1:08:32, 85.68s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 81-th batch in attack_all
+ 63%|██████▎   | 81/128 [1:53:21<1:05:02, 83.04s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 82-th batch in attack_all
+ 64%|██████▍   | 82/128 [1:54:43<1:03:30, 82.83s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 83-th batch in attack_all
+ 65%|██████▍   | 83/128 [1:56:11<1:03:14, 84.32s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 84-th batch in attack_all
+ 66%|██████▌   | 84/128 [1:58:11<1:09:48, 95.20s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 85-th batch in attack_all
+ 66%|██████▋   | 85/128 [1:59:45<1:07:48, 94.62s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 86-th batch in attack_all
+ 67%|██████▋   | 86/128 [2:01:02<1:02:30, 89.29s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 87-th batch in attack_all
+ 68%|██████▊   | 87/128 [2:02:18<58:28, 85.56s/it]  Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 88-th batch in attack_all
+ 69%|██████▉   | 88/128 [2:03:41<56:23, 84.59s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 89-th batch in attack_all
+ 70%|██████▉   | 89/128 [2:04:58<53:28, 82.26s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 90-th batch in attack_all
+ 70%|███████   | 90/128 [2:06:25<53:08, 83.92s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 91-th batch in attack_all
+ 71%|███████   | 91/128 [2:07:42<50:26, 81.80s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 92-th batch in attack_all
+ 72%|███████▏  | 92/128 [2:08:59<48:11, 80.32s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 93-th batch in attack_all
+ 73%|███████▎  | 93/128 [2:10:27<48:09, 82.56s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 2 of 4
+Attack 1 of 20   Batch defended: 2 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 94-th batch in attack_all
+ 73%|███████▎  | 94/128 [2:11:55<47:40, 84.13s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 95-th batch in attack_all
+ 74%|███████▍  | 95/128 [2:13:22<46:52, 85.23s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 96-th batch in attack_all
+ 75%|███████▌  | 96/128 [2:15:01<47:37, 89.29s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 2 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 97-th batch in attack_all
+ 76%|███████▌  | 97/128 [2:16:29<45:53, 88.84s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 98-th batch in attack_all
+ 77%|███████▋  | 98/128 [2:17:46<42:37, 85.25s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 99-th batch in attack_all
+ 77%|███████▋  | 99/128 [2:19:14<41:34, 86.00s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 100-th batch in attack_all
+ 78%|███████▊  | 100/128 [2:20:36<39:37, 84.90s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 101-th batch in attack_all
+ 79%|███████▉  | 101/128 [2:22:20<40:48, 90.67s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 102-th batch in attack_all
+ 80%|███████▉  | 102/128 [2:23:48<38:54, 89.80s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 103-th batch in attack_all
+ 80%|████████  | 103/128 [2:25:27<38:31, 92.47s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 104-th batch in attack_all
+ 81%|████████▏ | 104/128 [2:26:43<35:06, 87.79s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 105-th batch in attack_all
+ 82%|████████▏ | 105/128 [2:28:06<33:01, 86.14s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 106-th batch in attack_all
+ 83%|████████▎ | 106/128 [2:29:23<30:33, 83.36s/it]Baseline: 2 of 4
+Attack 0 of 20   Batch defended: 2 of 4
+Attack 1 of 20   Batch defended: 2 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 107-th batch in attack_all
+ 84%|████████▎ | 107/128 [2:30:50<29:38, 84.70s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 108-th batch in attack_all
+ 84%|████████▍ | 108/128 [2:32:07<27:26, 82.34s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 109-th batch in attack_all
+ 85%|████████▌ | 109/128 [2:33:35<26:35, 83.97s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 110-th batch in attack_all
+ 86%|████████▌ | 110/128 [2:34:52<24:32, 81.83s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 111-th batch in attack_all
+ 87%|████████▋ | 111/128 [2:36:09<22:45, 80.33s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 112-th batch in attack_all
+ 88%|████████▊ | 112/128 [2:37:42<22:27, 84.21s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 113-th batch in attack_all
+ 88%|████████▊ | 113/128 [2:38:59<20:30, 82.00s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 114-th batch in attack_all
+ 89%|████████▉ | 114/128 [2:40:16<18:46, 80.45s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 115-th batch in attack_all
+ 90%|████████▉ | 115/128 [2:41:49<18:15, 84.29s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 116-th batch in attack_all
+ 91%|█████████ | 116/128 [2:43:39<18:22, 91.89s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 2 of 4
+Attack 20 of 20   Batch defended: 2 of 4
+finished 117-th batch in attack_all
+ 91%|█████████▏| 117/128 [2:45:12<16:55, 92.30s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 118-th batch in attack_all
+ 92%|█████████▏| 118/128 [2:46:29<14:36, 87.69s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 119-th batch in attack_all
+ 93%|█████████▎| 119/128 [2:48:08<13:39, 91.01s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 120-th batch in attack_all
+ 94%|█████████▍| 120/128 [2:49:30<11:47, 88.41s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 121-th batch in attack_all
+ 95%|█████████▍| 121/128 [2:50:47<09:54, 84.95s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 122-th batch in attack_all
+ 95%|█████████▌| 122/128 [2:52:15<08:34, 85.81s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 123-th batch in attack_all
+ 96%|█████████▌| 123/128 [2:53:31<06:55, 83.12s/it]Baseline: 4 of 4
+Attack 0 of 20   Batch defended: 4 of 4
+Attack 1 of 20   Batch defended: 4 of 4
+Attack 10 of 20   Batch defended: 4 of 4
+Attack 20 of 20   Batch defended: 4 of 4
+finished 124-th batch in attack_all
+ 97%|█████████▋| 124/128 [2:54:48<05:25, 81.25s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 125-th batch in attack_all
+ 98%|█████████▊| 125/128 [2:56:11<04:04, 81.59s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 126-th batch in attack_all
+ 98%|█████████▊| 126/128 [2:57:33<02:43, 81.80s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 127-th batch in attack_all
+ 99%|█████████▉| 127/128 [2:58:55<01:21, 81.95s/it]Baseline: 3 of 4
+Attack 0 of 20   Batch defended: 3 of 4
+Attack 1 of 20   Batch defended: 3 of 4
+Attack 10 of 20   Batch defended: 3 of 4
+Attack 20 of 20   Batch defended: 3 of 4
+finished 128-th batch in attack_all
+100%|██████████| 128/128 [3:00:18<00:00, 82.07s/it]100%|██████████| 128/128 [3:00:18<00:00, 84.52s/it]
+Rank: 0, x_adv shape: torch.Size([512, 3, 32, 32])
+INFO - main_bpda_eot.py - 2025-10-13 15:37:42,228 - Rank:0
+INFO - main_bpda_eot.py - 2025-10-13 15:37:42,229 - standard accuracy: 0.90625
+INFO - main_bpda_eot.py - 2025-10-13 15:37:42,229 - robust accuracy: 0.8125
+INFO - main_bpda_eot.py - 2025-10-13 15:37:42,229 - All gpus
+INFO - main_bpda_eot.py - 2025-10-13 15:37:42,229 - standard accuracy: 0.90625
+INFO - main_bpda_eot.py - 2025-10-13 15:37:42,229 - robust accuracy: 0.8125
+INFO - main_bpda_eot.py - 2025-10-13 15:37:42,229 - time elapsed: 10818.19s
+Done with sdiff_cons=0.25
+ 
+Completed outer loop iteration: 1 (seed=41)
+===============================

@@ -1,0 +1,2 @@
+,dataset,att_method,att_lp_norm,subset_size,subset_number,att_step,att_n_iter,att_eot_defense,att_eot_attack,purify_type,purify_method,total_steps,forward_steps,purify_iter,lr,init,loss_lambda,seed,std_acc,rob_acc
+0,CIFAR10,pgd_eot,-1.0,512.0,1.0,1.0,20.0,150.0,20.0,opt,aaopt,1.0,0.25,20.0,0.1,0.0,1.0,41.0,0.916015625,0.8515625
