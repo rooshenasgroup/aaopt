@@ -1,4 +1,4 @@
-# Adversary Aware Optimization (AAOpt)
+# Adversary Aware Optimization (AAOpt) - NeurIPS 2025
 
 > This repository contains the implementation of **AAOpt** (Adversary Aware Optimization), a test-time adversarial purification framework that combines a diffusion prior with a learned perturbation model to defend against different adaptive adversarial attacks.
 
@@ -106,7 +106,7 @@ The following scripts generate adversarial data using AutoAttack for the classif
 
 This repository is based on previous work of [Score-Opt](https://github.com/zzzhangboya/ScoreOpt/tree/main). We thank the authors for their work.
 
-### If you find this work useful, please cite our paper from Neurips 2025 conference:
+### If you find this work useful, please cite our paper:
 
 ```bibtex
 @inproceedings{wesego2025adversary,
