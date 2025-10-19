@@ -1,6 +1,6 @@
-# Adversary Aware diffusion Optimization (AAOpt)
+# Adversary Aware Optimization (AAOpt)
 
-> This repository contains the implementation of **AAOpt** (Adversary Aware diffusion Optimization), a test-time adversarial purification framework that combines a diffusion prior with a learned perturbation model to defend against different adaptive adversarial attacks.
+> This repository contains the implementation of **AAOpt** (Adversary Aware Optimization), a test-time adversarial purification framework that combines a diffusion prior with a learned perturbation model to defend against different adaptive adversarial attacks.
 
 ![screenshot](./assets/aaopt.png)
 
